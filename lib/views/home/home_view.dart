@@ -192,6 +192,7 @@ class _HomeViewState extends State<HomeView> {
                                 child: AppButton.outlined(
                                   onPressed: () {},
                                   borderRadius: 8.0,
+                                  sideColor: AppColors.white,
                                   label: "Kirim Barang Pribadi",
                                   textStyle: AppTextStyle.h4.copyWith(
                                     color: AppColors.white,

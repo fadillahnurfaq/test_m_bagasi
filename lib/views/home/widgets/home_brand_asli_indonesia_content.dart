@@ -72,6 +72,7 @@ class HomeBrandAsliIndonesiaContent extends StatelessWidget {
                           withCard: true,
                           elevation: 0.0,
                           isCircleBorder: true,
+                          allowPreview: false,
                           backgroundColor: AppColors.white,
                           emptyWidget: Assets.images.noImage.image(
                             fit: BoxFit.fill,

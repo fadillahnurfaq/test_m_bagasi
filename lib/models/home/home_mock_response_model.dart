@@ -95,7 +95,7 @@ class LagiViral {
   final String desc;
   final String type;
   final String category;
-  final String sellingPrice;
+  final double? sellingPrice;
   final String brandName;
   final double? weight;
   final String imageUrl;
@@ -123,7 +123,7 @@ class LagiViral {
       desc: json["desc"] ?? "",
       type: json["type"] ?? "",
       category: json["category"] ?? "",
-      sellingPrice: json["selling_price"] ?? "",
+      sellingPrice: ModelParser.doubleFromJson(json["selling_price"] ?? ""),
       brandName: json["brand_name"] ?? "",
       weight: ModelParser.doubleFromJson(json["weight"] ?? ""),
       imageUrl: json["image_url"] ?? "",

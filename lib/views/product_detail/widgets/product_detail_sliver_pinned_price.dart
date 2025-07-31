@@ -112,9 +112,14 @@ class _PinnedPriceContent extends StatelessWidget {
                 padding: EdgeInsets.all(5.0),
                 borderRadius: BorderRadius.circular(0.0),
                 elevation: 0.0,
-                child: Center(
-                  child: Assets.icons.loveCircle.svg(height: 30.0, width: 30.0),
-                ),
+                child: controller.selectedProductVariant.value == null
+                    ? Column()
+                    : Center(
+                        child: Assets.icons.loveCircle.svg(
+                          height: 30.0,
+                          width: 30.0,
+                        ),
+                      ),
               ),
             ),
             SpaceWidth(3.0),
@@ -124,12 +129,14 @@ class _PinnedPriceContent extends StatelessWidget {
                 padding: EdgeInsets.all(5.0),
                 borderRadius: BorderRadius.circular(0.0),
                 elevation: 0.0,
-                child: Center(
-                  child: Assets.icons.shareCircle.svg(
-                    height: 30.0,
-                    width: 30.0,
-                  ),
-                ),
+                child: controller.selectedProductVariant.value == null
+                    ? Column()
+                    : Center(
+                        child: Assets.icons.shareCircle.svg(
+                          height: 30.0,
+                          width: 30.0,
+                        ),
+                      ),
               ),
             ),
           ],

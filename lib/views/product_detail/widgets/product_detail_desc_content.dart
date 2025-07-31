@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:test_m_bagasi/utils/app_global_func.dart';
 
 import '../../../controllers/product_detail/product_detail_controller.dart';
+import '../../../models/product/product_detail_mock_response_model.dart';
+import '../../../models/response/response_model.dart';
 import '../../../utils/utils.dart';
 import '../../../widgets/widgets.dart';
 
 class ProductDetailDescContent extends StatelessWidget {
-  const ProductDetailDescContent({super.key});
+  final ResponseModel<ProductDetailMockResponseModel?>? result;
+  const ProductDetailDescContent({super.key, required this.result});
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +28,9 @@ class ProductDetailDescContent extends StatelessWidget {
               Padding(
                 padding: AppPadding.horizonal,
                 child: AppText(
-                  text:
-                      "3Second - Regular Fit Basic Logo Script Ultra Absorb T Shirt Short Sleeve OL-C450723",
+                  text: AppGlobalFunc.getText(
+                    result?.data?.productDetail?.name,
+                  ),
                   textStyle: AppTextStyle.h4,
                 ),
               ),
@@ -136,7 +141,9 @@ class ProductDetailDescContent extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     AppText(
-                      text: "Produk Fesyen Indonesia",
+                      text: AppGlobalFunc.getText(
+                        result?.data?.productDetail?.productCertification,
+                      ),
                       textStyle: AppTextStyle.regularStyle.copyWith(
                         fontSize: 14.0,
                       ),
@@ -158,7 +165,9 @@ class ProductDetailDescContent extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     AppText(
-                      text: "Fesyen",
+                      text: AppGlobalFunc.getText(
+                        result?.data?.productDetail?.categoryName,
+                      ),
                       textStyle: AppTextStyle.regularStyle.copyWith(
                         fontSize: 14.0,
                       ),
@@ -180,7 +189,9 @@ class ProductDetailDescContent extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     AppText(
-                      text: "3Second",
+                      text: AppGlobalFunc.getText(
+                        result?.data?.productDetail?.brandName,
+                      ),
                       textStyle: AppTextStyle.regularStyle.copyWith(
                         fontSize: 14.0,
                       ),
@@ -202,14 +213,13 @@ class ProductDetailDescContent extends StatelessWidget {
               AppText(text: "Deskripsi Produk", textStyle: AppTextStyle.h4),
               SpaceHeight(10.0),
               AppText(
-                text:
-                    "dapatkan kenyamanan abadi dengan kaos original 3second yang timeless ini, pilihan sempurna untuk menemani setiap aktivitasmu. dibuat dari 100% katun berkualitas tinggi, kaos regular fit ini menawarkan kelembutan luar biasa dan daya serap keringat yang optimal, membuatmu tetap nyaman ke mana pun pergi. tersedia dalam warna serbaguna off white (putih) dan jet black (hitam), kaos ini sangat mudah dipadukan dengan berbagai outer dan jenis celana, memastikan kamu selalu siap dan stylish menjalani hari. tersedia dalam ukuran s (lebar dada 52 cm, panjang badan 71 cm, panjang tangan 22 cm), m (lebar dada 54 cm, panjang badan 73 cm, panjang tangan 23 cm), l (lebar dada 56 cm, panjang badan 75 cm, panjang tangan 24 cm), dan xl (lebar dada 58 cm, panjang badan 77 cm, panjang tangan 25 cm). harap diingat, ukuran bisa berbeda sekitar 1-3 cm dan warna produk mungkin sedikit berbeda karena pencahayaan foto atau tampilan gadget.",
+                text: AppGlobalFunc.getText(result?.data?.productDetail?.desc),
                 textStyle: AppTextStyle.regularStyle.copyWith(fontSize: 14.0),
               ),
             ],
           ),
         ),
-        SpaceHeight(150.0),
+        SpaceHeight(100.0),
       ],
     );
   }

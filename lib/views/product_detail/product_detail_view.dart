@@ -205,7 +205,7 @@ class _ProductDetailViewState extends State<ProductDetailView> {
                           SliverToBoxAdapter(
                             child: Padding(
                               padding: AppPadding.normal.copyWith(top: 0.0),
-                              child: ProductDetailDescContent(),
+                              child: ProductDetailDescContent(result: result),
                             ),
                           ),
                         ],
@@ -216,46 +216,76 @@ class _ProductDetailViewState extends State<ProductDetailView> {
           ),
         ),
       ),
-      bottomNavigationBar: Container(
-        padding: EdgeInsets.all(16.0),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          spacing: 8.0,
-          children: [
-            AppCard(
-              height: 40.0,
-              decoration: BoxDecoration(
-                color: Colors.transparent,
-                borderRadius: BorderRadius.circular(8.0),
-                border: Border.all(color: AppColors.black, width: 2.0),
-              ),
-              child: Icon(Icons.message, size: 20.0),
-            ),
+      bottomNavigationBar: Obx(
+        () => WidgetAnimator<ResponseModel<ProductDetailMockResponseModel?>>(
+          requestState: controller.state.value,
+          successWidget: (result) {
+            return Container(
+              padding: EdgeInsets.all(16.0),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                spacing: 8.0,
+                children: [
+                  AppCard(
+                    height: 40.0,
+                    decoration: BoxDecoration(
+                      color: Colors.transparent,
+                      borderRadius: BorderRadius.circular(8.0),
+                      border: Border.all(color: AppColors.black, width: 2.0),
+                    ),
+                    onTap: () {},
+                    child: Icon(Icons.message, size: 20.0),
+                  ),
 
-            Expanded(
-              child: AppButton.outlined(
-                height: 40.0,
-                onPressed: () {},
-                color: AppColors.white,
-                overlayColor: AppColors.black,
-                borderRadius: 8.0,
-                label: "Beli Langsung",
-                textStyle: AppTextStyle.h4,
-              ),
-            ),
+                  Obx(
+                    () => Expanded(
+                      child: AppButton.outlined(
+                        height: 40.0,
+                        onPressed: () {},
+                        disabled:
+                            controller.selectedProductVariant.value == null,
+                        color: AppColors.white,
+                        overlayColor: AppColors.black,
+                        borderRadius: 8.0,
+                        label: "Beli Langsung",
+                        textStyle: AppTextStyle.h4.copyWith(
+                          color: controller.selectedProductVariant.value == null
+                              ? AppColors.grey50
+                              : AppColors.black,
+                        ),
+                      ),
+                    ),
+                  ),
 
-            Expanded(
-              child: AppButton.outlined(
-                height: 40.0,
-                onPressed: () {},
-                color: AppColors.black,
-                borderRadius: 8.0,
-                icon: Icon(Icons.add, color: AppColors.white, size: 20.0),
-                label: "Keranjang",
-                textStyle: AppTextStyle.h4.copyWith(color: AppColors.white),
+                  Obx(
+                    () => Expanded(
+                      child: AppButton.outlined(
+                        height: 40.0,
+                        onPressed: () {},
+                        disabled:
+                            controller.selectedProductVariant.value == null,
+                        color: AppColors.black,
+                        borderRadius: 8.0,
+                        icon: Icon(
+                          Icons.add,
+                          color: controller.selectedProductVariant.value == null
+                              ? AppColors.grey50
+                              : AppColors.white,
+                          size: 20.0,
+                        ),
+                        label: "Keranjang",
+                        textStyle: AppTextStyle.h4.copyWith(
+                          color: controller.selectedProductVariant.value == null
+                              ? AppColors.grey50
+                              : AppColors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ),
-          ],
+            );
+          },
         ),
       ),
     );

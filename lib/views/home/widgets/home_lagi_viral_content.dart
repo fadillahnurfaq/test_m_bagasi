@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test_m_bagasi/utils/app_global_func.dart';
 import 'package:test_m_bagasi/views/product_detail/product_detail_view.dart';
 
 import '../../../gen/assets.gen.dart';
@@ -95,7 +96,12 @@ class HomeLagiViralContent extends StatelessWidget {
                           textOverflow: TextOverflow.ellipsis,
                         ),
                         SpaceHeight(8.0),
-                        AppText(text: "RP222.000", textStyle: AppTextStyle.h4),
+                        AppText(
+                          text: AppGlobalFunc.formatCurrency(
+                            lagiViral.sellingPrice,
+                          ),
+                          textStyle: AppTextStyle.h4,
+                        ),
                         Spacer(),
                         AppCard(
                           padding: EdgeInsets.all(3.0),
@@ -107,7 +113,7 @@ class HomeLagiViralContent extends StatelessWidget {
                             overflow: TextOverflow.ellipsis,
                             maxLines: 1,
                             text: TextSpan(
-                              text: "0,5-59",
+                              text: "${lagiViral.weight ?? 0}",
                               style: AppTextStyle.h4.copyWith(fontSize: 12.0),
                               children: [
                                 TextSpan(

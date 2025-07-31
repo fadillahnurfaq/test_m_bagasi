@@ -1,4 +1,4 @@
-package com.test.masterbagasi.test_m_bagasi
+package com.test.masterbagasi
 
 import io.flutter.embedding.android.FlutterActivity
 
